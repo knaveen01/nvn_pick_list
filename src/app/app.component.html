@@ -1,0 +1,30 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <div class="nvn-item nvn-list" fxFlex="40">
+    <mat-selection-list #nvnsource (selectionChange)="nvnOnSourceSelectionChange($event)">
+        <mat-list-option *ngFor="let sourceItem of nvn_source_list">
+          {{sourceItem.name}}
+        </mat-list-option>
+      </mat-selection-list>
+  </div>
+  <div class="nvn-item" fxFlex="10">
+    <div class="nvn-move-all-right" (click)="nvnMoveAllRight($event)">
+        <button mat-button [disabled]="nvn_source_list.length<=0"><mat-icon>chevron_right</mat-icon><mat-icon>chevron_right</mat-icon></button>
+    </div>
+    <div class="nvn-move-right" (click)="nvnMoveRight($event)">
+        <button mat-button [disabled]="nvnsource.selectedOptions.selected.length<=0"><mat-icon>chevron_right</mat-icon></button>
+    </div>
+    <div class="nvn-move-left" (click)="nvnMoveLeft($event)">
+        <button mat-button [disabled]="nvntarget.selectedOptions.selected.length<=0"><mat-icon>chevron_left</mat-icon></button>
+    </div>
+    <div class="nvn-move-all-left" (click)="nvnMoveAllLeft($event)">
+        <button mat-button [disabled]="nvn_target_list.length<=0"><mat-icon>chevron_left</mat-icon><mat-icon>chevron_left</mat-icon></button>
+    </div>
+  </div>
+  <div class="nvn-item nvn-list" fxFlex="40">
+      <mat-selection-list #nvntarget (selectionChange)="nvnOnTargetSelectionChange($event)">
+          <mat-list-option *ngFor="let sourceItem of nvn_target_list">
+            {{sourceItem.name}}
+          </mat-list-option>
+        </mat-selection-list>
+  </div>
+</div>
